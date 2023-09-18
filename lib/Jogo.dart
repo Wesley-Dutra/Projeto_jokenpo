@@ -8,7 +8,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var _result = 'pedra';
+  var _imageResult = 'padrao';
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +42,8 @@ class _HomeState extends State<Home> {
                   child: Padding(
                     padding: EdgeInsets.all(9),
                     child: Image.asset(
-                      'images/padrao.png',
-                      width: 90,
+                      'images/$_imageResult.png',
+                      width: 60,
                     ),
                   ),
                 ),
@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
               Padding(
                 padding: EdgeInsets.only(bottom: 25),
                 child: Text(
-                  '$_result',
+                  'Escolha uma opção abaixo:',
                   style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.bold
