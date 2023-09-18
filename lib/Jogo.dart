@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -8,7 +10,59 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var _imageResult = 'padrao';
+  var _imageResult = AssetImage('images/padrao.png');
+  var _result = 'Escolha uma opção abaixo:';
+
+  _opcaoSelecionada (String escolhaUsuario) {
+    var opcoes = ['pedra', 'papel', 'tesoura'];
+    var numero = Random().nextInt(opcoes.length);
+
+    setState(() {
+      _imageResult = AssetImage('images/'+opcoes[numero]+'.png');
+    });
+
+    if (opcoes[numero] == escolhaUsuario) {
+      setState(() {
+        _result = 'Empate!';
+      });
+    } else {
+      switch (escolhaUsuario) {
+        case 'pedra':
+          if (opcoes[numero] == 'tesoura') {
+            setState(() {
+              _result = 'Parabéns, você ganhou!';
+            });
+          } else {
+            setState(() {
+              _result = 'Infelizmente você perdeu!';
+            });
+          }
+          break;
+        case 'papel':
+          if (opcoes[numero] == 'pedra') {
+            setState(() {
+              _result = 'Parabéns, você ganhou!';
+            });
+          } else {
+            setState(() {
+              _result = 'Infelizmente você perdeu!';
+            });
+          }
+          break;
+        case 'tesoura':
+          if (opcoes[numero] == 'papel') {
+            setState(() {
+              _result = 'Parabéns, você ganhou!';
+            });
+          } else {
+            setState(() {
+              _result = 'Infelizmente você perdeu!';
+            });
+          }
+          break;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +94,10 @@ class _HomeState extends State<Home> {
                       color: Colors.grey.shade100
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(9),
-                    child: Image.asset(
-                      'images/$_imageResult.png',
-                      width: 60,
+                    padding: EdgeInsets.all(10),
+                    child: Image(
+                      image: _imageResult,
+                      width: 90,
                     ),
                   ),
                 ),
@@ -51,7 +105,7 @@ class _HomeState extends State<Home> {
               Padding(
                 padding: EdgeInsets.only(bottom: 25),
                 child: Text(
-                  'Escolha uma opção abaixo:',
+                  '$_result',
                   style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.bold
@@ -62,7 +116,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => _opcaoSelecionada('pedra'),
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Image.asset(
@@ -76,7 +130,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => _opcaoSelecionada('papel'),
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Image.asset(
@@ -90,7 +144,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => _opcaoSelecionada('tesoura'),
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Image.asset(
