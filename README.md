@@ -18,6 +18,6 @@ Projeto em flutter que simula um jog de Jokenpo, o qual o usuário pode selecion
 
 ![image](https://github.com/Wesley-Dutra/Projeto_jokenpo/assets/72281650/2006a605-a4b5-453d-be8d-c77dad7ad9f0)
 
-- Selecionado **Pedra** e o usuário **Ganhou**
+- Selecionado **Tesoura** e o usuário **Ganhou**
 
 ![image](https://github.com/Wesley-Dutra/Projeto_jokenpo/assets/72281650/c9c93a8c-6869-4e02-afc0-c8f3d32425bc)
